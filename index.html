@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InNerCraft — UmAir</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            /* Fixed Professional Color Palette */
+            --primary-bg: #f8fafc;
+            --secondary-bg: #ffffff;
+            --tertiary-bg: #f1f5f9;
+            --quaternary-bg: #e2e8f0;
+            
+            --card-bg: #ffffff;
+            --card-border: #e2e8f0;
+            --//card-shadow: rgba(15, 23, 42, 0.08);
+            --//card-shadow-hover: rgba(15, 23, 42, 0.12);
+            
+            --text-primary: #0f172a;
+            --text-secondary: #334155;
+            --text-muted: #64748b;
+            --text-disabled: #94a3b8;
+            
+            --accent-primary: #2563eb;
+            --accent-primary-hover: #1d4ed8;
+            --accent-primary-light: #dbeafe;
+            
+            --accent-secondary: #7c3aed;
+            --accent-secondary-hover: #6d28d9;
+            --accent-secondary-light: #ede9fe;
+            
+            --accent-success: #059669;
+            --accent-success-hover: #047857;
+            --accent-success-light: #d1fae5;
+            
+            --accent-warning: #d97706;
+            --accent-warning-hover: #b45309;
+            --accent-warning-light: #fef3c7;
+            
+            --accent-danger: #dc2626;
+            --accent-danger-hover: #b91c1c;
+            --accent-danger-light: #fee2e2;
+            
+            --border-light: #f1f5f9;
+            --border-medium: #e2e8f0;
+            --border-strong: #cbd5e1;
+            --border-accent: #2563eb;
+            
+            --//shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --//shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+            --//shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            --//shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            --//shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            --radius-2xl: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.1;
+            font-weight: 400;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Professional Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
+            background-size: 24px 24px;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--accent-primary-light) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            letter-spacing: 0.15em;
+            position: relative;
+        }
+
+        .header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 2px;
+        }
+
+        .header .subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.20em;
+        }
+
+        //.header //.description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .main-card {
+            background: var(--card-bg);
+            border: 2px solid var(--card-border);
+            border-radius: var(--radius-2xl);
+            padding: 3rem;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-success));
+            border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+        }
+
+        .form-section {
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border-light);
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: white;
+            box-shadow: var(--shadow-md);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section-icon:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-section:nth-child(1) .section-icon { background: var(--accent-primary); }
+        .form-section:nth-child(2) .section-icon { background: var(--accent-success); }
+        .form-section:nth-child(3) .section-icon { background: var(--accent-secondary); }
+        .form-section:nth-child(4) .section-icon { background: var(--accent-warning); }
+        .form-section:nth-child(5) .section-icon { background: var(--accent-danger); }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        .section-subtitle {
+            font-size: 0.8750rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background: var(--secondary-bg);
+            border: 2px solid var(--border-medium);
+            border-radius: var(--radius-lg);
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            outline: none;
+        }
+
+        .input-field:focus {
+            border-color: var(--border-accent);
+            background: var(--accent-primary-light);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .input-field::placeholder {
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .input-field:hover:not(:focus) {
+            border-color: var(--border-strong);
+            background: var(--tertiary-bg);
+        }
+
+        .generate-section {
+            text-align: center;
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .generate-btn {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-primary-hover));
+            border: none;
+            border-radius: var(--radius-xl);
+            padding: 1rem 1.5rem;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+            min-width: 220px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .generate-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+            background: linear-gradient(135deg, var(--accent-primary-hover), var(--accent-secondary));
+        }
+
+        .generate-btn:hover::before {
+            left: 100%;
+        }
+
+        .generate-btn:active {
+            transform: translateY(0);
+        }
+
+        .generate-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .output-section {
+            margin-top: 1rem;
+        }
+
+        .output-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--tertiary-bg);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-medium);
+        }
+
+        .output-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .output-title i {
+            color: var(--accent-secondary);
+            font-size: 1rem;
+        }
+
+        .copy-btn {
+            background: var(--secondary-bg);
+            border: 2px solid var(--border-medium);
+            border-radius: var(--radius-md);
+            padding: 0.5rem 1rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent-success-light);
+            border-color: var(--accent-success);
+            color: var(--accent-success-hover);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .json-output {
+            background: var(--secondary-bg);
+            border: 2px solid var(--border-medium);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', 'SF Mono', 'Monaco', monospace;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            width: 100%;
+            min-height: 300px;
+            resize: vertical;
+            outline: none;
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .json-output:focus {
+            border-color: var(--border-accent);
+            background: var(--accent-primary-light);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .status-message {
+            text-align: center;
+            margin-top: 1rem;
+            padding: 0.875rem 1.25rem;
+            border-radius: var(--radius-lg);
+            font-size: 0.95rem;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+        }
+
+        .status-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .status-message.success {
+            background: var(--accent-success-light);
+            border-color: var(--accent-success);
+            color: var(--accent-success-hover);
+        }
+
+        .status-message.info {
+            background: var(--accent-primary-light);
+            border-color: var(--accent-primary);
+            color: var(--accent-primary-hover);
+        }
+
+        .status-message.warning {
+            background: var(--accent-warning-light);
+            border-color: var(--accent-warning);
+            color: var(--accent-warning-hover);
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s linear infinite;
+            margin-right: 0.5rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--border-light);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .progress-bar.show {
+            opacity: 1;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            width: 0%;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 2px;
+        }
+
+        /* Professional Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--secondary-bg);
+            border: 1px solid var(--border-medium);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--border-strong);
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-primary);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 0.25rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .main-card {
+                padding: 2rem;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .generate-btn {
+                padding: 0.875rem 2rem;
+                font-size: 1rem;
+            }
+            
+            .main-card {
+                padding: 1.5rem;
+            }
+
+            .output-header {
+                flex-direction: column;
+                gap: 0.75rem;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Enhanced scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--border-light);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-strong);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-primary);
+        }
+
+        /* Selection styling */
+        ::selection {
+            background: var(--accent-primary-light);
+            color: var(--accent-primary-hover);
+        }
+
+        ::-moz-selection {
+            background: var(--accent-primary-light);
+            color: var(--accent-primary-hover);
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Focus styles for accessibility */
+        .input-field:focus,
+        .generate-btn:focus,
+        .copy-btn:focus {
+            outline: 2px solid var(--accent-primary);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>INNERCRAFT</h1>
+            <p class="subtitle">Psychological Profile Generator</p>
+          <br>
+        </header>
+
+        <div class="main-card">
+            <form id="profileForm">
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h2 class="section-title">Personal Information</h2>
+                            <p class="section-subtitle">Basic demographic identity data</p>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="fullName" class="input-label">- Full Name</label>
+                            <input type="text" id="fullName" class="input-field" placeholder="Enter complete legal name">
+                        </div>
+                        <div class="input-group">
+                            <label for="presentAge" class="input-label">- Present Age</label>
+                            <input type="number" id="presentAge" class="input-field" placeholder="Current age in years">
+                        </div>
+                        <div class="input-group">
+                            <label for="dateOfBirth" class="input-label">- Date of Birth</label>
+                            <input type="date" id="dateOfBirth" class="input-field">
+                        </div>
+                        <div class="input-group">
+                            <label for="genderAndRelationship" class="input-label">- Gender & Relationship</label>
+                            <input type="text" id="genderAndRelationship" class="input-field" placeholder="Gender identity and relationship status">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div>
+                            <h2 class="section-title">Social Network and Contact</h2>
+                            <p class="section-subtitle">Connections and Communication details</p>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="familyOrFriend" class="input-label">- Family or Friend</label>
+                            <input type="text" id="familyOrFriend" class="input-field" placeholder="Key family members or close friends">
+                        </div>
+                        <div class="input-group">
+                            <label for="contactInformation" class="input-label">- Contact Information</label>
+                            <input type="text" id="contactInformation" class="input-field" placeholder="Phone, email, and other contact methods">
+                        </div>
+                        <div class="input-group">
+                            <label for="addressAndLocation" class="input-label">- Address & Location</label>
+                            <input type="text" id="addressAndLocation" class="input-field" placeholder="Current residential address">
+                        </div>
+                        <div class="input-group">
+                            <label for="socialMediaActivity" class="input-label">- Social Media Activity</label>
+                            <input type="text" id="socialMediaActivity" class="input-field" placeholder="Online presence and social platforms">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div>
+                            <h2 class="section-title">Psychological Information</h2>
+                            <p class="section-subtitle">Personality traits and cognitive characteristics</p>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="personality" class="input-label">- Personality</label>
+                            <input type="text" id="personality" class="input-field" placeholder="Core personality traits and characteristics">
+                        </div>
+                        <div class="input-group">
+                            <label for="characterAbilities" class="input-label">- Character Abilities</label>
+                            <input type="text" id="characterAbilities" class="input-field" placeholder="Skills, talents, and capabilities">
+                        </div>
+                        <div class="input-group">
+                            <label for="weakness" class="input-label">- Weaknesses</label>
+                            <input type="text" id="weakness" class="input-field" placeholder="Areas for improvement or challenges">
+                        </div>
+                        <div class="input-group">
+                            <label for="emotionalIntelligence" class="input-label">- Emotional Intelligence</label>
+                            <input type="text" id="emotionalIntelligence" class="input-field" placeholder="EQ assessment and emotional awareness">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div>
+                            <h2 class="section-title">Health and Wellness</h2>
+                            <p class="section-subtitle">Mental health status and dependency information</p>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="mentalHealth" class="input-label">- Mental Health</label>
+                            <input type="text" id="mentalHealth" class="input-field" placeholder="Current mental health status and history">
+                        </div>
+                        <div class="input-group">
+                            <label for="addictionsAndDependencies" class="input-label">- Addictions and Dependencies</label>
+                            <input type="text" id="addictionsAndDependencies" class="input-field" placeholder="Any substance or behavioral dependencies">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h2 class="section-title">Professional and Growth</h2>
+                            <p class="section-subtitle">Career development and educational background</p>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="education" class="input-label">- Education</label>
+                            <input type="text" id="education" class="input-field" placeholder="Educational qualifications and institutions">
+                        </div>
+                        <div class="input-group">
+                            <label for="careerGoals" class="input-label">- Career Goals</label>
+                            <input type="text" id="careerGoals" class="input-field" placeholder="Professional aspirations and objectives">
+                        </div>
+                        <div class="input-group">
+                            <label for="personalGrowth" class="input-label">- Personal Growth</label>
+                            <input type="text" id="personalGrowth" class="input-field" placeholder="Self-development goals and initiatives">
+                        </div>
+                        <div class="input-group">
+                            <label for="financialAndSocialStatus" class="input-label">- Financial & Social Status</label>
+                            <input type="text" id="financialAndSocialStatus" class="input-field" placeholder="Economic standing and social position">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="generate-section">
+                    <button type="button" class="generate-btn" onclick="generateJSON()">
+                        <i class="fas fa-cogs"></i>
+                        Generate Profile
+                    </button>
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="output-section">
+                <div class="output-header">
+                    <h3 class="output-title">
+                        <i class="fas fa-code"></i>
+                        Generated JSON Profile
+                    </h3>
+                    <button class="copy-btn" onclick="copyToClipboard()">
+                        <i class="fas fa-copy"></i>
+                        Copy to Clipboard
+                    </button>
+                </div>
+                <textarea id="jsonOutput" class="json-output" readonly placeholder="Your Psychological Profile will Show hear..."></textarea>
+                <div id="statusMessage" class="status-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let isGenerating = false;
+
+        function showStatus(message, type = 'info') {
+            const statusElement = document.getElementById('statusMessage');
+            statusElement.textContent = message;
+            statusElement.className = `status-message ${type} show`;
+            
+            setTimeout(() => {
+                statusElement.classList.remove('show');
+            }, 5000);
+        }
+
+        function updateProgress(percentage) {
+            const progressBar = document.getElementById('progressBar');
+            const progressFill = document.getElementById('progressFill');
+            
+            if (percentage > 0) {
+                progressBar.classList.add('show');
+                progressFill.style.width = percentage + '%';
+            } else {
+                progressBar.classList.remove('show');
+                progressFill.style.width = '0%';
+            }
+        }
+
+        function generateJSON() {
+            if (isGenerating) return;
+            
+            isGenerating = true;
+            const generateBtn = document.querySelector('.generate-btn');
+            const originalContent = generateBtn.innerHTML;
+            
+            // Update button state
+            generateBtn.innerHTML = '<div class="loading-spinner"></div>Processing Profile...';
+            generateBtn.disabled = true;
+            
+            // Show progress
+            updateProgress(20);
+            showStatus('Initializing profile generation system...', 'info');
+            
+            setTimeout(() => {
+                updateProgress(40);
+                showStatus('Collecting and validating input data...', 'info');
+                
+                setTimeout(() => {
+                    updateProgress(60);
+                    showStatus('Processing psychological and professional data...', 'info');
+                    
+                    setTimeout(() => {
+                        updateProgress(80);
+                        showStatus('Structuring JSON format and metadata...', 'info');
+                        
+                        setTimeout(() => {
+                            updateProgress(100);
+                            
+                            // Collect form data - only include filled values
+                            const formData = {};
+                            
+                            // Personal Information
+                            const fullName = document.getElementById('fullName').value.trim();
+                            const presentAge = document.getElementById('presentAge').value.trim();
+                            const dateOfBirth = document.getElementById('dateOfBirth').value.trim();
+                            const genderAndRelationship = document.getElementById('genderAndRelationship').value.trim();
+                            
+                            if (fullName) formData.fullName = fullName;
+                            if (presentAge) formData.presentAge = parseInt(presentAge);
+                            if (dateOfBirth) formData.dateOfBirth = dateOfBirth;
+                            if (genderAndRelationship) formData.genderAndRelationship = genderAndRelationship;
+                            
+                            // Social & Contact
+                            const familyOrFriend = document.getElementById('familyOrFriend').value.trim();
+                            const contactInformation = document.getElementById('contactInformation').value.trim();
+                            const addressAndLocation = document.getElementById('addressAndLocation').value.trim();
+                            const socialMediaActivity = document.getElementById('socialMediaActivity').value.trim();
+                            
+                            if (familyOrFriend) formData.familyOrFriend = familyOrFriend;
+                            if (contactInformation) formData.contactInformation = contactInformation;
+                            if (addressAndLocation) formData.addressAndLocation = addressAndLocation;
+                            if (socialMediaActivity) formData.socialMediaActivity = socialMediaActivity;
+                            
+                            // Psychological Profile
+                            const personality = document.getElementById('personality').value.trim();
+                            const characterAbilities = document.getElementById('characterAbilities').value.trim();
+                            const weakness = document.getElementById('weakness').value.trim();
+                            const emotionalIntelligence = document.getElementById('emotionalIntelligence').value.trim();
+                            
+                            if (personality) formData.personality = personality;
+                            if (characterAbilities) formData.characterAbilities = characterAbilities;
+                            if (weakness) formData.weakness = weakness;
+                            if (emotionalIntelligence) formData.emotionalIntelligence = emotionalIntelligence;
+                            
+                            // Health & Wellness
+                            const mentalHealth = document.getElementById('mentalHealth').value.trim();
+                            const addictionsAndDependencies = document.getElementById('addictionsAndDependencies').value.trim();
+                            
+                            if (mentalHealth) formData.mentalHealth = mentalHealth;
+                            if (addictionsAndDependencies) formData.addictionsAndDependencies = addictionsAndDependencies;
+                            
+                            // Professional & Growth
+                            const education = document.getElementById('education').value.trim();
+                            const careerGoals = document.getElementById('careerGoals').value.trim();
+                            const personalGrowth = document.getElementById('personalGrowth').value.trim();
+                            const financialAndSocialStatus = document.getElementById('financialAndSocialStatus').value.trim();
+                            
+                            if (education) formData.education = education;
+                            if (careerGoals) formData.careerGoals = careerGoals;
+                            if (personalGrowth) formData.personalGrowth = personalGrowth;
+                            if (financialAndSocialStatus) formData.financialAndSocialStatus = financialAndSocialStatus;
+
+                            // Generate formatted JSON
+                            const jsonString = JSON.stringify(formData, null, 2);
+                            
+                            // Display in output
+                            document.getElementById('jsonOutput').value = jsonString;
+                            
+                            // Reset button
+                            generateBtn.innerHTML = originalContent;
+                            generateBtn.disabled = false;
+                            isGenerating = false;
+                            
+                            // Hide progress
+                            setTimeout(() => updateProgress(0), 1000);
+                            
+                            showStatus('Professional JSON profile generated successfully! Preparing download...', 'success');
+                            
+                            // Auto-download after 3 seconds
+                            setTimeout(() => {
+                                downloadJSON(jsonString, fullName || 'profile');
+                                showStatus('Professional profile downloaded successfully!', 'success');
+                            }, 3000);
+                            
+                        }, 500);
+                    }, 600);
+                }, 700);
+            }, 400);
+        }
+
+        function downloadJSON(jsonString, fileName) {
+            const blob = new Blob([jsonString], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${fileName.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.json`;
+            
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            
+            URL.revokeObjectURL(url);
+        }
+
+        function copyToClipboard() {
+            const output = document.getElementById('jsonOutput');
+            if (output.value) {
+                navigator.clipboard.writeText(output.value).then(() => {
+                    showStatus('Professional JSON profile copied to clipboard successfully!', 'success');
+                }).catch(() => {
+                    // Fallback for older browsers
+                    output.select();
+                    document.execCommand('copy');
+                    showStatus('Professional JSON profile copied to clipboard successfully!', 'success');
+                });
+            } else {
+                showStatus('No JSON data available to copy. Please generate a profile first.', 'warning');
+            }
+        }
+
+        // Enhanced interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('.input-field');
+            
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.style.transform = 'translateY(-1px)';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Keyboard shortcuts
+            document.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && e.key === 'Enter') {
+                    e.preventDefault();
+                    generateJSON();
+                }
+                if (e.ctrlKey && e.key === 'c' && e.target.id === 'jsonOutput') {
+                    copyToClipboard();
+                }
+            });
+        });
+
+        // Form validation
+        function validateForm() {
+            const requiredFields = ['fullName'];
+            let isValid = true;
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    field.style.borderColor = 'var(--accent-danger)';
+                    field.style.backgroundColor = 'var(--accent-danger-light)';
+                    isValid = false;
+                    
+                    setTimeout(() => {
+                        field.style.borderColor = '';
+                        field.style.backgroundColor = '';
+                    }, 3000);
+                }
+            });
+            
+            return isValid;
+        }
+
+        // Enhanced generate function with validation
+        const originalGenerateJSON = generateJSON;
+        generateJSON = function() {
+            if (!validateForm()) {
+                showStatus('Please fill in the required field: Full Name', 'warning');
+                return;
+            }
+            originalGenerateJSON();
+        };
+    </script>
+</body>
+</html>
+
