@@ -14,4 +14,4 @@
 
 > Developed By — **UmAir.**
 
-> **Use The Tool :** **[`HTML EDITOR`](https://eumair.github.io/innercraft/)**
+> **Use The Tool :** **[`INNERCRAFT`](https://eumair.github.io/innercraft/)**
