@@ -1,12 +1,17 @@
 ## PSYCHOLOGICAL PROFILE GENERATOR
-Full Name // Present Age
 
-Date of Birth // Family Or Friend
+- `Full Name // Present Age`
 
-Character Abilities // Contact Information // Address And Location 
+- `Date of Birth // Family Or Friend`
 
-Gender And Relationship // Financial And Social Status
+- `Character Abilities // Contact Information // Address And Location` 
 
-Weakness // Personality // Mental Health
+- `Gender And Relationship // Financial And Social Status`
 
-Emotional Intelligence // Addictions And Dependencies
+- `Weakness // Personality // Mental Health`
+
+- `Emotional Intelligence // Addictions And Dependencies`
+
+> Developed By — **UmAir.**
+
+> **Use The Tool :** **[`HTML EDITOR`](https://eumair.github.io/innercraft/)**
